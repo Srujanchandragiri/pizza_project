@@ -1,0 +1,183 @@
+App.js 
+import logo from './logo.svg';
+import './App.css';
+import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Navbarr from './components/Navbarr';
+import HomeScreen from './Screens/HomeScreen';
+
+function App() {
+  return (
+    <div className="App">
+     <Navbarr/>
+     <HomeScreen/>
+    </div>
+  );
+}
+
+export default App;
+
+components
+Navbar
+import React from "react";
+
+export default function Navbarr() {
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-white rounded">
+        <a className="navbar-brand" href="#">
+          Pizza Hunt
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav ml-auto">
+
+
+            <li className="nav-item active">
+              <a className="nav-link" href="#">
+                Login <span className="sr-only">(current)</span>
+              </a>
+            </li> 
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Cart  
+              </a>
+            </li>
+           
+          </ul>
+        </div>
+      </nav>
+    </div>
+  );
+}
+
+Pizza.js
+
+import React from 'react'
+
+export default function Pizza({pizza}) {
+  return (
+    <div>
+        <h1>{pizza.name}</h1> 
+        <img src={pizza.image} className="img-fluid"/>
+    </div>
+  )
+}
+
+Screens
+HomeScreen.js
+
+import React from 'react'
+import pizzas from '../pizzasdata'
+import Pizza from '../components/Pizza'
+
+export default function HomeScreen() {
+  return (
+    <div>
+        <div className='row'>
+
+             {pizzas.map(pizza=>{
+
+                return <div className="col-md-4">
+                    <div>
+                        <Pizza pizza={pizza}/>
+                    </div>
+                    </div>
+             })}
+
+        </div>
+
+    </div>
+  )
+}
+
+index.js
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif !important;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-link{
+  color:grey !important;
+}
+
+h1{
+  font-size: 20px !important ;
+}
+.img-fluid{
+  height: 75%;
+  width: 75%;
+}
+
+pizzadata.js
+const pizzas = [
+  {
+    name: "Pepper Barbeque CHICKEN",
+    Varients: ["small", "medium", "large"],
+    Prices: [
+      {
+        small: 200,
+        medium: 350,
+        large: 400
+      }
+    ],
+    category: "nonveg",
+    image: "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
+    description: "Pepper Barbecue Chicken I Cheese"
+  },
+  {
+    name: "Non Veg Supreme",
+    Varients: ["small", "medium", "large"],
+    Prices: [
+      {
+        small: 300,
+        medium: 450,
+        large: 500
+      }
+    ],
+    category: "nonveg",
+    image: "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
+    description: "Pepper Barbecue Chicken I Cheese"
+  },
+  {
+    name: "Golden Corn Pizza",
+    Varients: ["small", "medium", "large"],
+    Prices: [
+      {
+        small: 100,
+        medium: 150,
+        large: 400
+      }
+    ],
+    category: "Veg",
+    image: "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
+    description: "Pepper Barbecue Chicken I Cheese"
+  }
+];
+
+export default pizzas;
+
+
